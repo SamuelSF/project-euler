@@ -4,15 +4,16 @@
       b
       (recur b r))))
 
-(defn biggest-multiple [nums]
-  (if (empty? (rest nums))
-    (first nums)
-    (let [m (biggest-multiple (rest nums))]
-      (/
-       (* (first nums) m)
-       (gcd (first nums) m)))))
+(defn lcm [a b]
+  (/ (* a b) (gcd a b)))
 
-(biggest-multiple (loop [m (vector) n 1]
-                    (if (= n 21)
-                      m
-                      (recur (conj m n) (inc n)))))
+(defn biggest-multiple [nums]
+  (reduce lcm nums))
+
+(defn range-to-vector [start stop]
+  (loop [n start result []]
+    (if (> n stop)
+      result
+      (recur (inc n) (conj result n)))))
+
+(println (biggest-multiple (range-to-vector 1 20)))
