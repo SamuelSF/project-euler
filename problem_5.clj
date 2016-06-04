@@ -1,8 +1,9 @@
 (defn gcd [a b]
-  (let [r (mod a b)]
-    (if (= r 0)
-      b
-      (recur b r))))
+  (if (not= b 0)
+    (if (> a b)
+      (recur (- a b) b)
+      (recur a (- b a)))
+    a))
 
 (defn lcm [a b]
   (/ (* a b) (gcd a b)))
