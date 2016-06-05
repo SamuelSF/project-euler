@@ -27,3 +27,10 @@ def make_copy(ary)
   new_ary
 end
 
+a = generate_permutation([1, 2, 3, 4, 5, 6])
+
+a.each do |x|
+  puts x.to_s
+end
+
+puts a.length.to_s + " permutations"
